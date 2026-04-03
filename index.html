@@ -114,17 +114,9 @@
 
         /* --- Layout --- */
         header { 
-            width: 90%; 
-            max-width: 1000px; 
-            padding: 24px; 
-            text-align: center; 
-            margin-top: 30px; 
-            margin-bottom: 40px; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            gap: 15px; 
-            background: var(--warning);
+            width: 90%; max-width: 1000px; padding: 24px; text-align: center; 
+            margin-top: 30px; margin-bottom: 40px; display: flex; align-items: center; 
+            justify-content: center; gap: 15px; background: var(--warning);
         }
         header h1 { font-size: 28px; font-weight: 800; text-transform: uppercase; letter-spacing: -0.5px;}
         header i { font-size: 36px; }
@@ -144,56 +136,25 @@
         .nav-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
         
         .mode-selector { 
-            display: flex; 
-            justify-content: space-between; 
-            padding: 8px; 
-            background: #fff;
-            gap: 10px; 
-            margin-bottom: 24px; 
+            display: flex; justify-content: space-between; padding: 8px; 
+            background: #fff; gap: 10px; margin-bottom: 24px; 
         }
         
         .mode-label { 
-            flex: 1;
-            text-align: center;
-            cursor: pointer; 
-            padding: 12px 10px; 
-            font-weight: 700; 
-            font-size: 14px; 
-            border: 2px solid transparent;
-            border-radius: var(--border-radius); 
-            transition: all 0.2s ease; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center;
-            gap: 8px; 
-            text-transform: uppercase;
+            flex: 1; text-align: center; cursor: pointer; padding: 12px 10px; 
+            font-weight: 700; font-size: 14px; border: 2px solid transparent;
+            border-radius: var(--border-radius); transition: all 0.2s ease; 
+            display: flex; align-items: center; justify-content: center; gap: 8px; text-transform: uppercase;
         }
         .mode-label input { display: none; }
-        .mode-label.active { 
-            border-color: var(--border-color); 
-            background: var(--secondary); 
-            box-shadow: 3px 3px 0px var(--border-color);
-        }
+        .mode-label.active { border-color: var(--border-color); background: var(--secondary); box-shadow: 3px 3px 0px var(--border-color); }
 
         /* Camera Viewfinder */
-        .camera-wrapper { 
-            width: 100%; 
-            max-width: 500px; 
-            margin: 0 auto; 
-            padding: 20px; 
-            display: flex; 
-            flex-direction: column; 
-            gap: 20px; 
-        }
-        
+        .camera-wrapper { width: 100%; max-width: 500px; margin: 0 auto; padding: 20px; display: flex; flex-direction: column; gap: 20px; }
         .camera-container { 
-            position: relative; 
-            width: 100%; 
-            aspect-ratio: 3/4; 
+            position: relative; width: 100%; aspect-ratio: 3/4; 
             border: var(--border-width) solid var(--border-color);
-            background: #000; 
-            border-radius: var(--border-radius);
-            overflow: hidden;
+            background: #000; border-radius: var(--border-radius); overflow: hidden;
         }
         #camera-feed { width: 100%; height: 100%; object-fit: cover; display: block; }
         .camera-grid { 
@@ -201,20 +162,22 @@
             background-image: linear-gradient(to right, transparent calc(33.33% - 1px), rgba(255,255,255,0.7) 33.33%, transparent calc(33.33% + 1px), transparent calc(66.66% - 1px), rgba(255,255,255,0.7) 66.66%, transparent calc(66.66% + 1px)), 
                               linear-gradient(to bottom, transparent calc(33.33% - 1px), rgba(255,255,255,0.7) 33.33%, transparent calc(33.33% + 1px), transparent calc(66.66% - 1px), rgba(255,255,255,0.7) 66.66%, transparent calc(66.66% + 1px)); 
         }
-        
-        .filmstrip { 
-            display: none; gap: 12px; padding: 14px; 
-            overflow-x: auto; background: #fff; 
-            border: var(--border-width) solid var(--border-color);
+
+        /* Fallback UI for when overlays block the live camera */
+        #fallback-ui {
+            position: absolute; inset: 0; display: none; flex-direction: column; 
+            align-items: center; justify-content: center; background: #000; 
+            color: #fff; text-align: center; padding: 20px; z-index: 10;
         }
+        #fallback-ui i { font-size: 50px; color: var(--warning); margin-bottom: 15px; }
+        
+        .filmstrip { display: none; gap: 12px; padding: 14px; overflow-x: auto; background: #fff; border: var(--border-width) solid var(--border-color); }
         .filmstrip.active { display: flex; animation: slideUp 0.3s ease; }
         .thumb-wrapper { position: relative; flex-shrink: 0; }
         .thumb-wrapper img { height: 80px; width: 60px; object-fit: cover; border: 2px solid #000; }
         .thumb-wrapper .del-thumb { 
-            position: absolute; top: -10px; right: -10px; 
-            background: var(--primary); color: white; border: 2px solid #000; 
-            width: 24px; height: 24px; font-weight: bold;
-            display: flex; align-items: center; justify-content: center; 
+            position: absolute; top: -10px; right: -10px; background: var(--primary); color: white; border: 2px solid #000; 
+            width: 24px; height: 24px; font-weight: bold; display: flex; align-items: center; justify-content: center; 
             cursor: pointer; box-shadow: 2px 2px 0 #000;
         }
 
@@ -225,19 +188,15 @@
         }
         
         .icon-btn { 
-            width: 50px; height: 50px; background: var(--warning); 
-            border: var(--border-width) solid var(--border-color); 
-            color: var(--text-main); font-size: 24px; cursor: pointer; 
-            display: flex; align-items: center; justify-content: center; 
+            width: 50px; height: 50px; background: var(--warning); border: var(--border-width) solid var(--border-color); 
+            color: var(--text-main); font-size: 24px; cursor: pointer; display: flex; align-items: center; justify-content: center; 
             box-shadow: 4px 4px 0px var(--border-color); transition: all 0.1s; 
         }
         .icon-btn:active { transform: translate(4px, 4px); box-shadow: 0 0 0 #000; }
 
         .shutter-btn { 
-            width: 70px; height: 70px; border-radius: 50%; 
-            border: 4px solid var(--border-color); background: var(--primary); 
-            cursor: pointer; box-shadow: 5px 5px 0px var(--border-color); 
-            transition: all 0.1s; outline: none;
+            width: 70px; height: 70px; border-radius: 50%; border: 4px solid var(--border-color); background: var(--primary); 
+            cursor: pointer; box-shadow: 5px 5px 0px var(--border-color); transition: all 0.1s; outline: none;
         }
         .shutter-btn:active { transform: translate(5px, 5px); box-shadow: 0 0 0 #000; background: var(--primary-hover); }
         
@@ -249,55 +208,42 @@
         .inventory-card { padding: 24px; display: flex; flex-direction: column; background: #FFF; }
         
         .carousel-container { 
-            position: relative; width: 100%; padding-top: 100%; 
-            border: var(--border-width) solid var(--border-color); 
+            position: relative; width: 100%; padding-top: 100%; border: var(--border-width) solid var(--border-color); 
             overflow: hidden; margin-bottom: 20px; background: #000;
         }
         .carousel-img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; }
         .carousel-nav { 
-            position: absolute; top: 50%; transform: translateY(-50%); 
-            background: #fff; border: 2px solid #000; width: 40px; height: 40px; 
-            display: flex; align-items: center; justify-content: center; 
+            position: absolute; top: 50%; transform: translateY(-50%); background: #fff; border: 2px solid #000; 
+            width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; 
             cursor: pointer; box-shadow: 4px 4px 0px #000; z-index: 2; font-size: 20px;
         }
         .carousel-nav:active { box-shadow: 0 0 0 #000; margin-top: 4px; margin-left: 4px; }
         .nav-left { left: 10px; }
         .nav-right { right: 10px; }
         .carousel-badge { 
-            position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%); 
-            background: var(--warning); color: #000; padding: 6px 14px; 
-            border: 2px solid #000; font-size: 14px; font-weight: 800; z-index: 2; box-shadow: 3px 3px 0 #000;
+            position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%); background: var(--warning); 
+            color: #000; padding: 6px 14px; border: 2px solid #000; font-size: 14px; font-weight: 800; z-index: 2; box-shadow: 3px 3px 0 #000;
         }
 
         .inventory-actions { display: flex; gap: 12px; margin-top: 10px; }
-        .empty-state { 
-            grid-column: 1 / -1; text-align: center; padding: 60px 20px; 
-            display: flex; flex-direction: column; align-items: center; gap: 15px; 
-        }
+        .empty-state { grid-column: 1 / -1; text-align: center; padding: 60px 20px; display: flex; flex-direction: column; align-items: center; gap: 15px; }
         .empty-state i { font-size: 64px; color: var(--text-main); }
 
         /* --- Global Components --- */
         .toast { 
-            position: fixed; bottom: 40px; left: 50%; transform: translateX(-50%) translateY(150px); 
-            padding: 16px 28px; background: var(--success); color: #000; border: 3px solid #000;
-            font-weight: 800; font-size: 16px; opacity: 0; 
-            transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55), opacity 0.3s; 
-            z-index: 9999; display: flex; align-items: center; gap: 12px; box-shadow: 6px 6px 0px #000; 
+            position: fixed; bottom: 40px; left: 50%; transform: translateX(-50%) translateY(150px); padding: 16px 28px; 
+            background: var(--success); color: #000; border: 3px solid #000; font-weight: 800; font-size: 16px; opacity: 0; 
+            transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55), opacity 0.3s; z-index: 9999; display: flex; align-items: center; gap: 12px; box-shadow: 6px 6px 0px #000; 
         }
         .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
         .toast.danger-toast { background: var(--primary); color: #fff; }
         .toast.sync-toast { background: var(--secondary); }
 
         .loader-overlay { 
-            position: fixed; inset: 0; background: rgba(244, 240, 234, 0.9); 
-            z-index: 10000; display: none; flex-direction: column; align-items: center; 
-            justify-content: center; color: var(--text-main); font-weight: 800; gap: 20px; font-size: 20px; text-transform: uppercase;
+            position: fixed; inset: 0; background: rgba(244, 240, 234, 0.9); z-index: 10000; display: none; flex-direction: column; 
+            align-items: center; justify-content: center; color: var(--text-main); font-weight: 800; gap: 20px; font-size: 20px; text-transform: uppercase;
         }
-        .spinner { 
-            width: 60px; height: 60px; border: 6px solid #000; 
-            border-top: 6px solid var(--primary); border-radius: 50%; 
-            animation: spin 0.8s linear infinite; 
-        }
+        .spinner { width: 60px; height: 60px; border: 6px solid #000; border-top: 6px solid var(--primary); border-radius: 50%; animation: spin 0.8s linear infinite; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
         
         select.brutal-input { appearance: none; background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>'); background-repeat: no-repeat; background-position: right 16px center; cursor: pointer; }
@@ -351,7 +297,15 @@
             <div class="camera-wrapper brutal-box">
                 <div class="camera-container">
                     <video id="camera-feed" autoplay playsinline></video>
-                    <div class="camera-grid"></div>
+                    <div class="camera-grid" id="camera-grid"></div>
+                    
+                    <!-- Native OS Fallback View -->
+                    <div id="fallback-ui">
+                        <i class="ph-bold ph-warning-circle"></i>
+                        <h3 style="margin-bottom: 10px; font-family:'Space Grotesk'">Live Camera Blocked</h3>
+                        <p style="font-size: 14px; opacity: 0.8; margin-bottom: 20px;">Your phone has a screen overlay (chat head, filter, etc.) blocking live video.</p>
+                        <p style="font-size: 16px; font-weight: bold; color: var(--success);">Tap the shutter below to open your device's native camera instead.</p>
+                    </div>
                 </div>
                 
                 <div id="filmstrip" class="filmstrip"></div>
@@ -360,7 +314,12 @@
                     <button class="icon-btn" onclick="switchCamera()" title="Flip Camera">
                         <i class="ph-bold ph-arrows-clockwise"></i>
                     </button>
+                    <!-- Trigger for both Live and Native -->
                     <button class="shutter-btn" onclick="takePhoto()" title="Capture"></button>
+                    
+                    <!-- Hidden File Input for Native OS Camera Fallback -->
+                    <input type="file" id="native-camera-input" accept="image/*" capture="environment" style="display: none;" onchange="handleNativeCamera(event)">
+                    
                     <div style="width: 50px;"></div>
                 </div>
 
@@ -395,7 +354,7 @@
         // ==========================================
         // 1. SUPABASE CREDENTIALS
         // ==========================================
-        const SUPABASE_URL = 'http://127.0.0.1:3000/orders.html?serverWindowId=c27d067e-fce9-483c-a7df-8a8fc9d2d2a1'; 
+        const SUPABASE_URL = 'https://lgfcyobjvjtdtradvyta.supabase.co'; 
         const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxnZmN5b2Jqdmp0ZHRyYWR2eXRhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzUyMDczOTIsImV4cCI6MjA5MDc4MzM5Mn0.bflKpxSxejFXVlesIfl6zb-SOr6mqhZtkopJJEbhuYU';
         
         const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
@@ -405,6 +364,7 @@
         let inventoryData = [];
         let currentBatch = []; 
         let isInventoryLoaded = false;
+        let isFallbackMode = false;
 
         // ==========================================
         // INITIALIZE REALTIME SYNC
@@ -458,23 +418,57 @@
         }
 
         // ==========================================
-        // CAMERA LOGIC
+        // CAMERA LOGIC (WITH NATIVE FALLBACK)
         // ==========================================
         async function startCamera() {
             if (currentStream) stopCamera();
+            
+            const feed = document.getElementById('camera-feed');
+            const grid = document.getElementById('camera-grid');
+            const fallbackUI = document.getElementById('fallback-ui');
+
             try {
-                currentStream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: facingMode, width: { ideal: 1920 }, height: { ideal: 1080 } } });
-                document.getElementById('camera-feed').srcObject = currentStream;
-            } catch (err) { alert("Camera access denied."); }
+                // Try live browser camera
+                currentStream = await navigator.mediaDevices.getUserMedia({ 
+                    video: { facingMode: facingMode, width: { ideal: 1920 }, height: { ideal: 1080 } } 
+                });
+                
+                feed.srcObject = currentStream;
+                feed.style.display = 'block';
+                grid.style.display = 'block';
+                fallbackUI.style.display = 'none';
+                isFallbackMode = false;
+
+            } catch (err) {
+                // Android blocks getUserMedia if an overlay is present. Trigger fallback mode.
+                console.warn("Live camera blocked. Switching to native camera fallback.", err);
+                currentStream = null;
+                isFallbackMode = true;
+                
+                feed.style.display = 'none';
+                grid.style.display = 'none';
+                fallbackUI.style.display = 'flex';
+            }
         }
 
         function stopCamera() {
             if (currentStream) { currentStream.getTracks().forEach(track => track.stop()); currentStream = null; }
         }
 
-        function switchCamera() { facingMode = facingMode === 'environment' ? 'user' : 'environment'; startCamera(); }
+        function switchCamera() { 
+            if (isFallbackMode) return showToast("Switch camera inside your native app.", "sync");
+            facingMode = facingMode === 'environment' ? 'user' : 'environment'; 
+            startCamera(); 
+        }
 
         function takePhoto() {
+            // If live camera is blocked, open the phone's native camera
+            if (isFallbackMode || !currentStream) {
+                document.getElementById('native-camera-input').click();
+                return;
+            }
+
+            // Normal Live Camera Capture
             const video = document.getElementById('camera-feed');
             const canvas = document.getElementById('canvas');
             const mode = document.querySelector('input[name="captureMode"]:checked').value;
@@ -484,13 +478,28 @@
             
             canvas.toBlob((blob) => {
                 const url = URL.createObjectURL(blob);
-                if (mode === 'single') {
-                    uploadSingleImage(blob);
-                } else {
-                    currentBatch.push({ blob, url });
-                    renderFilmstrip();
-                }
+                if (mode === 'single') { uploadSingleImage(blob); } 
+                else { currentBatch.push({ blob, url }); renderFilmstrip(); }
             }, 'image/jpeg', 0.85);
+        }
+
+        // Native Camera Fallback Handler
+        function handleNativeCamera(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const mode = document.querySelector('input[name="captureMode"]:checked').value;
+            const url = URL.createObjectURL(file);
+
+            if (mode === 'single') {
+                uploadSingleImage(file);
+            } else {
+                currentBatch.push({ blob: file, url: url });
+                renderFilmstrip();
+            }
+            
+            // Reset input so taking another photo works
+            event.target.value = '';
         }
 
         function renderFilmstrip() {
@@ -763,7 +772,7 @@
         function exportCSV() {
             if (inventoryData.length === 0) return alert("No data available to export.");
             
-            // Required headers matched exactly
+            // Required headers
             let csv = "Model No,Price,Gender category,Sizes Available,Color,Style,Image URLs (Pipe Separated)\n";
             
             inventoryData.forEach(r => {
